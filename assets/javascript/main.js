@@ -1,25 +1,43 @@
 $(document).ready(function () {
 
-    /* This function takes the val taken when submit button is clicked
-     This method is defined below this function */
 
+    /* This function dynamically adds a new button by passing 
+    inputSubject variable from, addNewButton(inputSubject), 
+    generated from the clicking the and does the following:*/
     function addNewButton(input) {
+        // creats variable that adds button element
         var newButton = $("<button>");
-        newButton.addClass("clickable m-2")
+        // adds classes to created above <button>
+        newButton.addClass("clickable m-1 btn btn-dark")
+        // assigns the value of that button to input
         newButton.attr("value", input)
+        // displays that value in into the button as text
         newButton.text(input);
+        // and finaly, displays the button on the DOM, before the last placed (AKA prepend)
         $("#buttonDisplay").prepend(newButton);
     }
 
+    /* When button (diynamically generated in above function) 
+    a set of gifs containing the subject matter on 
+    the button is displayed by doing the following*/
     $(document).on("click", ".clickable", function () {
         console.log("button clicked")
+        // Creates variable that takes the value (AKA text) of the button button.
         var thisval = $(this).val();
         console.log("this value text; " + thisval);
-        serchGifs(thisval);
+        // Takes that value an passes into the serchGits function
+        searchGifs(thisval);
     })
-
-    function serchGifs(subject) {
+// This allows to search for the buttons that are initially loaded
+    $(document).on("click", ".existing", function () {
+        var exist = $(this).text().trim();
+        console.log("existing button: " + exist);
+        searchGifs(exist);
         
+    });
+
+    function searchGifs(subject) {
+
         $("#gifDisplay").empty();
 
         // API to GiPHY 
@@ -36,18 +54,19 @@ $(document).ready(function () {
             console.log(response)
 
             /* Variable of the portion of the array being accessed,
-            int this case, the data property of the response*/
+            in this case, the data property of the response*/
             var results = response.data;
 
-            /* This loops thrugh each index and does the following*/
+            /* Loops thrugh each index and does the following*/
             for (i = 0; i < results.length; i++) {
 
-                // Assignes it the var gifImage and tells it to give a tag of <img>
+                // Creates the gifImage variable and assigns it a tag of <img>
                 var gifImage = $("<img>");
 
                 /* then assigns it the src attribute and gives it the value of
                 of fixed_height url in the images index of the each response index */
                 gifImage.attr("src", results[i].images.fixed_height.url)
+                gifImage.addClass("m-3")
 
                 /* Takes gif stored in gifImage variable, displays it 
                 in the gifDispay div adding each to the before the last */
@@ -65,8 +84,7 @@ $(document).ready(function () {
         var inputSubject = $("#inputSubject").val().trim();
         console.log("This is inputSubject: " + inputSubject);
 
-        // Then takes the inputSubect var the passes into the addNewButtonq function
-        // serchGifs(inputSubject);
+        // Then takes the inputSubject variable and passes into the addNewButtonq function
         addNewButton(inputSubject);
     })
     $()

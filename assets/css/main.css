@@ -1,6 +1,16 @@
 /* Google font used: 
 font-family: 'Ubuntu', sans-serif; */
 
+/* FPO div reference */
+
+/* div {
+    border: .25px solid magenta;
+} */
+
+body {
+    background-image: url("../images/qbkls.png")
+}
+
 #logo {
     height: 100%;
 }
