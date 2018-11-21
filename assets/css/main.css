@@ -1,0 +1,13 @@
+/* Google font used: 
+font-family: 'Ubuntu', sans-serif; */
+
+#logo {
+    height: 100%;
+}
+
+h1 {
+    color: #f8f9fa;
+    font-family: "Ubuntu", sans-serif;
+    font-style: italic;
+    font-weight: 700;
+}
