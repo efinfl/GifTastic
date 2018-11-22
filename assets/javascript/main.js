@@ -17,25 +17,6 @@ $(document).ready(function () {
         $("#buttonDisplay").prepend(newButton);
     }
 
-    /* When button (diynamically generated in above function) 
-    a set of gifs containing the subject matter on 
-    the button is displayed by doing the following*/
-    $(document).on("click", ".clickable", function () {
-        console.log("button clicked")
-        // Creates variable that takes the value (AKA text) of the button button.
-        var thisval = $(this).val();
-        console.log("this value text; " + thisval);
-        // Takes that value an passes into the serchGits function
-        searchGifs(thisval);
-    })
-// This allows to search for the buttons that are initially loaded
-    $(document).on("click", ".existing", function () {
-        var exist = $(this).text().trim();
-        console.log("existing button: " + exist);
-        searchGifs(exist);
-        
-    });
-
     function searchGifs(subject) {
 
         $("#gifDisplay").empty();
@@ -74,6 +55,7 @@ $(document).ready(function () {
             }
         })
     };
+    
     // This is the submitt button in the DOM. When clicked, it triggers the follwoing
     $("#findGif").on("click", function (event) {
         // Prevents trying to push out any data which is the defualt. We're getting not pushging
@@ -86,9 +68,33 @@ $(document).ready(function () {
 
         // Then takes the inputSubject variable and passes into the addNewButtonq function
         addNewButton(inputSubject);
-    })
-    $()
+    });
+    
+    //This function triggers the on click defined above by pressign Enter key 
+    $("#inputSubject").keypress(function(event) {
+        if(event.which === 13) {
+        $("#findGif").click();
+        }
+    });
 
+    /* When button (diynamically generated in addNewButton function) 
+    a set of gifs containing the subject matter on 
+    the button is displayed by doing the following*/
+    $(document).on("click", ".clickable", function () {
+        console.log("button clicked")
+        // Creates variable that takes the value (AKA text) of the button.
+        var thisval = $(this).val();
+        console.log("this value text; " + thisval);
+        // Takes that value and passes into the serchGits function
+        searchGifs(thisval);
+   
+    })
+    // This facilitates search for the buttons that are initially loaded
+    $(document).on("click", ".existing", function () {
+        var exist = $(this).text().trim();
+        console.log("existing button: " + exist);
+        searchGifs(exist);
+    });
 
 
 
