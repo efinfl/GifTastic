@@ -1,6 +1,9 @@
 $(document).ready(function () {
 
 
+
+    // ======================== Dynamically Adds Buttons ========================
+
     /* This function dynamically adds a new button by passing 
     inputSubject variable from, addNewButton(inputSubject), 
     generated from the clicking the and does the following:*/
@@ -17,14 +20,16 @@ $(document).ready(function () {
         $("#buttonDisplay").prepend(newButton);
     }
 
+    // ======================== Search API and Add GIfs to DOM ==============================
+
     function searchGifs(subject) {
 
         $("#gifDisplay").empty();
 
-        // API to GiPHY 
+        // GiPHY API 
         var queryUrl = "https://api.giphy.com/v1/gifs/search?q=" + subject + "&api_key=a00MXncvbcuOCFWA6igsGFqN9ptIyixu&limit=5"
 
-        console.log(queryUrl);
+        console.log("queryURL: " + queryUrl);
 
         // AJAX request gets information based the inputSubject passed into searchGifs
         $.ajax({
@@ -38,23 +43,29 @@ $(document).ready(function () {
             in this case, the data property of the response*/
             var results = response.data;
 
-            /* Loops thrugh each index and does the following*/
+            /* Loops through each index and does the following*/
             for (i = 0; i < results.length; i++) {
 
                 // Creates the gifImage variable and assigns it a tag of <img>
                 var gifImage = $("<img>");
 
+                // Gives gifImage variable a class to be used in still animate toggle.
+                gifImage.addClass("clickGif");
+
                 /* then assigns it the src attribute and gives it the value of
                 of fixed_height url in the images index of the each response index */
-                gifImage.attr("src", results[i].images.fixed_height.url)
+                gifImage.attr("src", results[i].images.fixed_height.url);
                 gifImage.addClass("m-3")
 
                 /* Takes gif stored in gifImage variable, displays it 
                 in the gifDispay div adding each to the before the last */
-                $("#gifDisplay").prepend(gifImage)
+                $("#gifDisplay").prepend(gifImage);
             }
         });
     };
+
+
+    // ==================== Submit Button Functionality ============================
 
     // This is the submitt button in the DOM. When clicked, it triggers the follwoing
     $("#findGif").on("click", function (event) {
@@ -68,7 +79,7 @@ $(document).ready(function () {
         if ($("#inputSubject").val() == "") {
             event.preventDefault();
         }
-        
+
         // Otherwise it generates a new button by...
         else {
 
@@ -80,12 +91,16 @@ $(document).ready(function () {
         }
     });
 
+    // ============================== Enter Key Funtionality =======================
+
     //This function triggers the on-click defined above if Enter Key is pressed.
     $("#inputSubject").keypress(function (event) {
         if (event.which === 13) {
             $("#findGif").click();
         }
     });
+
+    // ================== Subject Buttons functinality ==========================
 
     /* When button (diynamically generated in addNewButton function) 
     a set of gifs containing the subject matter on 
@@ -106,9 +121,14 @@ $(document).ready(function () {
         searchGifs(exist);
     });
 
+
+    // ======================= Pause Gif ==============================
+
     // When an image is clicked it toggles between still and animation
+    // Couln't figure this one out.
+    $(document).on("click", ".clickGif", function () {
+        var state = $(this).attr("src");
+        console.log("This variable state: " + state);
+    })
 
-
-
-
-})
+});
