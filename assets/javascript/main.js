@@ -55,28 +55,35 @@ $(document).ready(function () {
             }
         });
     };
-    
+
     // This is the submitt button in the DOM. When clicked, it triggers the follwoing
     $("#findGif").on("click", function (event) {
-        // Prevents trying to push out any data which is the defualt. We're getting not pushging
-        event.preventDefault();
 
         /*/ Var which holds data(.val()) input into the search field 
         then deletes (.trim()) extra spaced from each end */
         var inputSubject = $("#inputSubject").val().trim();
         console.log("This is inputSubject: " + inputSubject);
 
-        // Then takes the inputSubject variable and passes into the addNewButtonq function
-        addNewButton(inputSubject);
+        // If text field is empty, nothing happens
+        if ($("#inputSubject").val() == "") {
+            event.preventDefault();
+        }
+        
+        // Otherwise it generates a new button by...
+        else {
 
-        // Clears the text field after adding the button
-        $("#inputSubject").val("");
+            // taking the inputSubject variable and passes into the addNewButtonq function
+            addNewButton(inputSubject);
+
+            // Clears the text field after adding the button
+            $("#inputSubject").val("");
+        }
     });
-    
-    //This function triggers the on click defined above by pressign Enter key 
-    $("#inputSubject").keypress(function(event) {
-        if(event.which === 13) {
-        $("#findGif").click();
+
+    //This function triggers the on-click defined above if Enter Key is pressed.
+    $("#inputSubject").keypress(function (event) {
+        if (event.which === 13) {
+            $("#findGif").click();
         }
     });
 
@@ -90,14 +97,17 @@ $(document).ready(function () {
         console.log("this value text; " + thisval);
         // Takes that value and passes into the serchGits function
         searchGifs(thisval);
-   
+
     })
-    // This facilitates search for the buttons that are initially loaded
+    // This facilitates search for the buttons that are hard-coded loaded
     $(document).on("click", ".existing", function () {
         var exist = $(this).text().trim();
         console.log("existing button: " + exist);
         searchGifs(exist);
     });
+
+    // When an image is clicked it toggles between still and animation
+
 
 
 
