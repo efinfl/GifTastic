@@ -9,4 +9,4 @@ Creat an application that allows the user to display gif images based on the sub
 * The user then clicks the new button to diplay images of thier iquery.
 
 ## Demo:
-![Demo] (https://github.com/efinfl/GifTastic/blob/master/GifTastic_Demo.gif)
+https://github.com/efinfl/GifTastic/blob/master/GifTastic_Demo.gif
