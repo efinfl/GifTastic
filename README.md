@@ -1,7 +1,7 @@
 # GifTastic: Searching an API
 
 ## Objective:
-Creat an application that allows the user to display gif images based on the subject matter input in the search field.
+This application that allows the user to display gif images based on the subject matter input in the search field.
 
 ## How:
 * The user inputs the subject matter of interest into the search field.
