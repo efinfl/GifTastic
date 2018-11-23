@@ -53,7 +53,7 @@ $(document).ready(function () {
                 in the gifDispay div adding each to the before the last */
                 $("#gifDisplay").prepend(gifImage)
             }
-        })
+        });
     };
     
     // This is the submitt button in the DOM. When clicked, it triggers the follwoing
@@ -68,6 +68,9 @@ $(document).ready(function () {
 
         // Then takes the inputSubject variable and passes into the addNewButtonq function
         addNewButton(inputSubject);
+
+        // Clears the text field after adding the button
+        $("#inputSubject").val("");
     });
     
     //This function triggers the on click defined above by pressign Enter key 
