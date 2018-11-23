@@ -5,7 +5,7 @@ Creat an application that allows the user to display gif images based on the sub
 
 ## How:
 * The user inputs the subject matter of interest into the search field.
-* A button is daynamically genereated  diplayed based on this inquery.
+* A button is daynamically generated and displayed based on this inquery.
 * The user then clicks the new button to diplay images of thier iquery.
 
 ## Demo:
