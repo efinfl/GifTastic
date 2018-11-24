@@ -125,7 +125,7 @@ $(document).ready(function () {
     // ======================= Pause Gif ==============================
 
     // When an image is clicked it toggles between still and animation
-    // Couln't figure this one out.
+    // Couldn't figure this one out.
     $(document).on("click", ".clickGif", function () {
         var state = $(this).attr("src");
         console.log("This variable state: " + state);
