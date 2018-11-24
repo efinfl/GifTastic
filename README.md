@@ -1,12 +1,12 @@
 # GifTastic: Searching an API
 
 ## Objective:
-Creat an application that allows the user to display gif images based on the subject matter input in the search field.
+This application that allows the user to display gif images based on the subject matter input in the search field.
 
 ## How:
 * The user inputs the subject matter of interest into the search field.
-* A button is daynamically genereated  diplayed based on this inquery.
+* A button is daynamically generated and displayed based on this inquery.
 * The user then clicks the new button to diplay images of thier iquery.
 
 ## Demo:
-![] (GifTastic_Demo.gif)
+<img src="https://github.com/efinfl/GifTastic/blob/master/GifTastic_Demo.gif">
