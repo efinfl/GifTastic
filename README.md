@@ -1,7 +1,7 @@
 # GifTastic: Searching an API
 https://efinfl.github.io/GifTastic/
 
-Created using HTML, CSS, Javascript, and Ajax Requests to retrieve data from an API.
+Created using HTML, CSS, Javascript, JQuery, and Ajax Requests to retrieve data from an API.
 
 ## Objective:
 This application that allows the user to display gif images based on the subject matter input in the search field.
